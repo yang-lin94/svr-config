@@ -9,7 +9,7 @@ for model in $(ls -d */ | sed 's|/||g'); do
     echo "# ${model} ${name}" >>README.md
     echo '' >>README.md
     echo '```bash' >>README.md
-    echo "wget -qO - ${RAW}/${model}/${name}/${name}.txt | sudo bash" >>README.md
+    echo "wget -qO - ${RAW}/${model}/${name}/${name}.sh | sudo bash" >>README.md
     echo '```' >>README.md
     echo '' >>README.md
   done <${model}/model_name
