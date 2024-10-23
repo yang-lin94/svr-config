@@ -1,0 +1,19 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Alpine.*Linux' /etc/os-release; then
+  read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
+fi
+
+USER=bigred
+PASSWD=bigred
+AUID=1001
+
+# update and install
+apk add --no-cache --update-cache sudo bash
+adduser -s /bin/bash -h /home/${USER} -G wheel -u ${AUID} -D ${USER}
+chown -R ${USER}:wheel /home/${USER}
+chmod 700 /home/${USER}
+echo "${USER}:${PASSWD}" | chpasswd
