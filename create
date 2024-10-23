@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Check if two parameters are provided
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <folder_name> <file_name>"
+    exit 1
+fi
+
+# Get parameters
+folder_name1=$1
+folder_name2=$2
+
+# Create folder (if it doesn't exist)
+mkdir -p "${folder_name1}/${folder_name2}"
+
+
+# Create file
+file_path="${folder_name1}/${folder_name2}/${folder_name2}.txt"
+touch "$file_path"
+
+# Write some initial content to the file
+echo "#!/bin/bash" > "$file_path"
+
+echo "File created: $file_path"

@@ -1,1 +1,8 @@
 system.bigred
+system.disableSwap
+system.enableSwap
+system.ipv46
+system.ntp
+system.rclocal
+system.sshenv
+system.sudopw
