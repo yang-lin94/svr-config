@@ -1,0 +1,58 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Alpine.*Linux' /etc/os-release; then
+  read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
+fi
+
+# update and install
+apk add --no-cache --update-cache podman skopeo buildah
+
+# $CMWHERE == null is vm or is docker
+CMWHERE=$(grep -w 'docker\|libpod\|buildah' /proc/1/cgroup)
+if [ "${CMWHERE}" == "" ]; then
+  # disable swap
+  wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.disableSwap/system.disableSwap.txt | bash
+
+  # disable ipv46
+  wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.ipv46/system.ipv46.txt | bash
+
+  # setting
+  tee /etc/modules-load.d/containers.conf <<EOF
+br_netfilter
+overlay
+fuse
+ip_tables
+ip_conntrack
+EOF
+  modprobe br_netfilter
+  modprobe overlay
+  modprobe fuse
+  modprobe ip_tables
+  modprobe ip_conntrack
+
+  tee /etc/local.d/containers.start <<EOF
+mount --make-rshared /
+EOF
+  chmod a+x /etc/local.d/containers.start
+
+  # start service at boot
+  rc-update add cgroups
+  rc-service cgroups start
+
+  # fix
+  # https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files
+  # https://github.com/kubernetes-sigs/kind/issues/2240#issuecomment-838510890
+  tee /etc/sysctl.d/podman.conf <<EOF
+fs.inotify.max_user_watches = 524288
+fs.inotify.max_user_instances = 512
+net.netfilter.nf_conntrack_max = 524288
+EOF
+  sysctl -p /etc/sysctl.d/podman.conf
+fi
+
+# change setting
+mkdir -p /etc/containers &>/dev/null
+wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.podman/containers.conf -qO /etc/containers/containers.conf

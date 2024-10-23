@@ -1,4 +1,5 @@
 install.config
+install.podman
 system.bigred
 system.disableSwap
 system.enableSwap
