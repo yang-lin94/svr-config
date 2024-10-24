@@ -2,15 +2,21 @@
 
 RAW='https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main'
 
+# Define a list of folders to exclude
+EXCLUDE_DIRS=("k8s")
+
 echo '' >README.md
 for model in $(ls -d */ | sed 's|/||g'); do
-  ls ${model}/ | grep '\.' >${model}/model_name
-  while read name; do
-    echo "# ${model} ${name}" >>README.md
-    echo '' >>README.md
-    echo '```bash' >>README.md
-    echo "wget -qO - ${RAW}/${model}/${name}/${name}.txt | sudo bash" >>README.md
-    echo '```' >>README.md
-    echo '' >>README.md
-  done <${model}/model_name
+  # Check if the current folder is in the exclusion list
+  if [[ ! " ${EXCLUDE_DIRS[@]} " =~ " ${model} " ]]; then
+    ls ${model}/ | grep '\.' >${model}/model_name
+    while read name; do
+      echo "# ${model} ${name}" >>README.md
+      echo '' >>README.md
+      echo '```bash' >>README.md
+      echo "wget -qO - ${RAW}/${model}/${name}/${name}.txt | sudo bash" >>README.md
+      echo '```' >>README.md
+      echo '' >>README.md
+    done <${model}/model_name
+  fi
 done
