@@ -5,6 +5,12 @@
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.config/install.config.txt | sudo bash
 ```
 
+# alpine install.docker
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.docker/install.docker.txt | sudo bash
+```
+
 # alpine install.jq
 
 ```bash

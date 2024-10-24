@@ -1,4 +1,5 @@
 install.config
+install.docker
 install.jq
 install.mc
 install.podman

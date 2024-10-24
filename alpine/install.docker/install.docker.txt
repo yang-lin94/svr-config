@@ -1,0 +1,24 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Alpine.*Linux' /etc/os-release; then
+  read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
+fi
+
+# update and install
+apk add --no-cache --update-cache docker docker-compose
+
+# $CMWHERE == null is vm or is docker
+CMWHERE=$(grep -w 'docker\|libpod\|buildah' /proc/1/cgroup)
+if [ "${CMWHERE}" == "" ]; then
+  # start docker at boot
+  rc-update add docker
+  service docker start
+fi
+
+# include user in docker group
+echo -e '\nPlease run command\n'
+echo -e '\tsudo addgroup $(whoami) docker'
+echo -e '\tsudo reboot'
