@@ -1,0 +1,13 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Alpine.*Linux' /etc/os-release; then
+  read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
+fi
+
+# update and install
+curl -sL https://dl.min.io/client/mc/release/linux-amd64/mc -o mc
+sudo install -o root -g root -m 0755 mc /usr/local/bin/mc
+rm -r mc*

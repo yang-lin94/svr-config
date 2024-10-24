@@ -1,5 +1,8 @@
 install.config
+install.jq
+install.mc
 install.podman
+install.yq
 system.bigred
 system.disableSwap
 system.enableSwap
