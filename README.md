@@ -17,6 +17,12 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.jq/install.jq.txt | sudo bash
 ```
 
+# alpine install.k8s
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s/install.k8s.txt | sudo bash
+```
+
 # alpine install.mc
 
 ```bash

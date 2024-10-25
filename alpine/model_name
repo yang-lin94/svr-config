@@ -1,6 +1,7 @@
 install.config
 install.docker
 install.jq
+install.k8s
 install.mc
 install.podman
 install.yq
