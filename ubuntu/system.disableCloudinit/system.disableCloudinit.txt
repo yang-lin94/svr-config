@@ -1,0 +1,13 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Ubuntu.*LTS' /etc/os-release; then
+  read -rp 'Ops, Not UBUNTU LTS, Press any key to continue.' && exit 1
+fi
+
+# disable cloud init
+DEBIAN_FRONTEND=noninteractive apt purge -y cloud-init
+rm -rf /etc/cloud
+rm -rf /var/lib/cloud

@@ -1,0 +1,20 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Ubuntu.*LTS' /etc/os-release; then
+  read -rp 'Ops, Not UBUNTU LTS, Press any key to continue.' && exit 1
+fi
+
+# ipv4 and ipv6
+tee /etc/sysctl.d/ipv46.conf <<EOF
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+EOF
+sysctl -p /etc/sysctl.d/ipv46.conf

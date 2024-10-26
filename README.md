@@ -41,6 +41,12 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.yq/install.yq.txt | sudo bash
 ```
 
+# alpine system.base
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.base/system.base.txt | sudo bash
+```
+
 # alpine system.bigred
 
 ```bash
@@ -87,5 +93,47 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 
 ```bash
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.sudopw/system.sudopw.txt | sudo bash
+```
+
+# ubuntu system.bigred
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.bigred/system.bigred.txt | sudo bash
+```
+
+# ubuntu system.disableCloudinit
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.disableCloudinit/system.disableCloudinit.txt | sudo bash
+```
+
+# ubuntu system.disableSwap
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.disableSwap/system.disableSwap.txt | sudo bash
+```
+
+# ubuntu system.enableSwap
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.enableSwap/system.enableSwap.txt | sudo bash
+```
+
+# ubuntu system.ipv46
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.ipv46/system.ipv46.txt | sudo bash
+```
+
+# ubuntu system.ntp
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.ntp/system.ntp.txt | sudo bash
+```
+
+# ubuntu system.sudopw
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.sudopw/system.sudopw.txt | sudo bash
 ```
 

@@ -1,0 +1,7 @@
+system.bigred
+system.disableCloudinit
+system.disableSwap
+system.enableSwap
+system.ipv46
+system.ntp
+system.sudopw
