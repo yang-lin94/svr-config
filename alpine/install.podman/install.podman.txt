@@ -8,7 +8,7 @@ if ! grep -q 'Alpine.*Linux' /etc/os-release; then
 fi
 
 # update and install
-apk add --no-cache --update-cache podman skopeo buildah
+apk add --no-cache --update-cache podman skopeo buildah podman-compose
 
 # $CMWHERE == null is vm or is docker
 CMWHERE=$(grep -w 'docker\|libpod\|buildah' /proc/1/cgroup)
