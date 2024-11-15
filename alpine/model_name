@@ -5,6 +5,7 @@ install.k8s
 install.mc
 install.podman
 install.yq
+system.base
 system.bigred
 system.disableSwap
 system.enableSwap
