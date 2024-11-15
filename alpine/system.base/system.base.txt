@@ -31,7 +31,7 @@ sed -i '/#.*edge.*community/s/#//; s/ //g' /etc/apk/repositories
 apk add --no-cache --update-cache \
   sudo bash bash-completion \
   openssh-client sshpass \
-  jq yq nano noevim tree wget curl acl dialog git shellcheck \
+  jq yq nano neovim tree wget curl acl dialog git shellcheck \
   p7zip e2fsprogs \
   grep gettext \
   inotify-tools netcat-openbsd bind-tools \
