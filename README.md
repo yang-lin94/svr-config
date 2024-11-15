@@ -11,12 +11,6 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.docker/install.docker.txt | sudo bash
 ```
 
-# alpine install.jq
-
-```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.jq/install.jq.txt | sudo bash
-```
-
 # alpine install.k8s
 
 ```bash
@@ -33,12 +27,6 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 
 ```bash
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.podman/install.podman.txt | sudo bash
-```
-
-# alpine install.yq
-
-```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.yq/install.yq.txt | sudo bash
 ```
 
 # alpine system.base
