@@ -1,0 +1,49 @@
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: ${IP}
+  bindPort: 6443
+nodeRegistration:
+  criSocket: unix:///run/crio/crio.sock
+  imagePullPolicy: IfNotPresent
+  name: km1
+  taints: null
+---
+apiServer:
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta3
+certificatesDir: /etc/kubernetes/pki
+clusterName: jedi
+controllerManager: {}
+dns: {}
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: registry.k8s.io
+kind: ClusterConfiguration
+kubernetesVersion: ${kubeversion}
+networking:
+  dnsDomain: k8s.org
+  podSubnet: 10.244.0.0/16
+  serviceSubnet: 10.98.0.0/24
+scheduler: {}
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: ipvs
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+#pod-infra-container-image: registry.aliyuncs.com/google_containers/pause:3.1
+#podInfraContainerImage: registry.aliyuncs.com/google_containers/pause:3.1
+maxPods: 80
+#evictionHard:
+#  memory.available: "1024Mi"
+#  nodefs.available: "10%"
+#kubeReserved:
+#  cpu: "500m"
+#  memory: "1Gi"
+#systemReserved:
+#  cpu: "1"
+#  memory: "1Gi"
+#  ephemeral-storage: "10Gi"
