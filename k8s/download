@@ -1,0 +1,15 @@
+#!/bin/bash
+if ! command -v git &>/dev/null; then
+  echo 'Please install "git"' && exit 1
+fi
+
+rm -rf ./k8s &>/dev/null
+mkdir -p ./k8s
+
+git clone https://github.com/yang-lin94/svr-config.git &>/dev/null
+mv ./svr-config/k8s .
+rm -rf ./svr-config &>/dev/null
+rm -rf ./k8s/download &>/dev/null
+rm -rf ./k8s/README.md &>/dev/null
+
+find ./k8s -name '*.sh' -exec chmod a+x {} \;
