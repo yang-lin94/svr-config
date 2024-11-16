@@ -27,6 +27,7 @@ modprobe ip_tables
 
 tee /etc/local.d/containers.start <<EOF
 mount --make-rshared /
+mount --make-rshared /sys
 EOF
 chmod a+x /etc/local.d/containers.start
 
