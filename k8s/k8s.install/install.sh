@@ -15,7 +15,8 @@ if hostname | grep -qxP 'km1'; then
     echo "kubeadm not found" && exit 1
   fi
 
-  wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/k8s/k8s.install/init-config.yaml | envsubst | sudo kubeadm init --config=-
+  wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/k8s/k8s.install/init-config.yaml | envsubst > /tmp/init-config.yaml
+  sudo kubeadm init --config=/tmp/init-config.yaml
 
 
   # copy cluster token to home
