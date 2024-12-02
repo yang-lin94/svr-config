@@ -6,3 +6,4 @@ resources:
   - ns.yaml
   - redis-svc.yaml
   - redis-dep.yaml
+  - redis-pvc.yaml
