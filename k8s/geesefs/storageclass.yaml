@@ -6,7 +6,7 @@ metadata:
 stringData:
   accessKeyID: YOUR_ACCESS_KEY_ID
   secretAccessKey: YOUR_SECRET_ACCESS_KEY
-  endpoint: http://h
+  endpoint: http://minio-service.minio.svc:9000
 
 ---
 kind: StorageClass
