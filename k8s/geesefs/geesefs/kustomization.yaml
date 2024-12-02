@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: minio
 
 resources:
-  - driver.yaml
-  - provisioner.yaml
-  - csi-s3.yaml
+  - https://raw.githubusercontent.com/yandex-cloud/k8s-csi-s3/refs/heads/master/deploy/kubernetes/driver.yaml
+  - https://raw.githubusercontent.com/yandex-cloud/k8s-csi-s3/refs/heads/master/deploy/kubernetes/provisioner.yaml
+  - https://raw.githubusercontent.com/yandex-cloud/k8s-csi-s3/refs/heads/master/deploy/kubernetes/csi-s3.yaml
