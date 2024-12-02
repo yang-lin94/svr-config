@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  # https://github.com/kubernetes-sigs/metrics-server?tab=readme-ov-file#installation
+  # https://github.com/kubernetes-sigs/metrics-server/tree/v0.7.2/manifests/overlays/release
+  - github.com/kubernetes-sigs/metrics-server/manifests/overlays/release?ref=v0.7.2
+
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/args/-
+        value: --kubelet-insecure-tls
+    target:
+      kind: Deployment
+
+labels:
+  - includeSelectors: true
+    pairs:
+      app.kubernetes.io/instance: metrics-server
