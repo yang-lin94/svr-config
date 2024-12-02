@@ -7,7 +7,7 @@ if ! command -v kubectl &>/dev/null; then
   echo 'Please install "kubectl"' && exit 1
 fi
 
-if hostname | grep -qxP 'km1'; then
+if hostname | grep -qxE 'km1'; then
   # init
   export kubeversion=$(sudo kubeadm version -o json | jq -r .clientVersion.gitVersion)
 
