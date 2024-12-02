@@ -33,6 +33,6 @@ spec:
               mountPath: /data
       volumes:
         - name: redis
-          persistentVolumeClaim:
-            claimName: redis
+          hostPath:
+            path: /opt/redis
       restartPolicy: Always
