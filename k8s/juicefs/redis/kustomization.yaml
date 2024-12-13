@@ -3,7 +3,15 @@ kind: Kustomization
 namespace: minio
 
 resources:
-  - ns.yaml
   - redis-svc.yaml
   - redis-dep.yaml
-  - redis-pvc.yaml
+
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/template/spec/nodeSelector
+        value:
+          kubernetes.io/hostname: km1
+    target:
+      kind: Deployment
+      name: redis
