@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: portainer
+
+resources:
+  - https://downloads.portainer.io/ce2-21/portainer.yaml
+
+
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/storageClassName
+        value: juicers-minio
+    target:
+      kind: PersistentVolumeClaim
+      name: portainer
+
+  - patch: |-
+      - op: replace
+        path: /metadata/annotations/volume.alpha.kubernetes.io~1storage-class
+        value: juicers-minio
+    target:
+      kind: PersistentVolumeClaim
+      name: portainer
