@@ -10,7 +10,7 @@ patches:
   - patch: |-
       - op: add
         path: /spec/storageClassName
-        value: juicers-minio
+        value: juicefs-minio
     target:
       kind: PersistentVolumeClaim
       name: portainer
@@ -18,7 +18,7 @@ patches:
   - patch: |-
       - op: replace
         path: /metadata/annotations/volume.alpha.kubernetes.io~1storage-class
-        value: juicers-minio
+        value: juicefs-minio
     target:
       kind: PersistentVolumeClaim
       name: portainer
