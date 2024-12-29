@@ -15,14 +15,14 @@ wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubu
 wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.base/alias.sh -qO /etc/profile.d/alias.sh
 
 # resolv
-mkdir /etc/udhcpc &>/dev/null
-tee /etc/udhcpc/udhcpc.conf <<EOF
-RESOLV_CONF="no"
-EOF
+# mkdir /etc/udhcpc &>/dev/null
+# tee /etc/udhcpc/udhcpc.conf <<EOF
+# RESOLV_CONF="no"
+# EOF
 
-tee /etc/resolv.conf <<EOF
-nameserver 168.95.1.1
-nameserver 8.8.8.8
-EOF
+# tee /etc/resolv.conf <<EOF
+# nameserver 168.95.1.1
+# nameserver 8.8.8.8
+# EOF
 
 
