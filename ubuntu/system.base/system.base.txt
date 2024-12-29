@@ -25,18 +25,4 @@ nameserver 168.95.1.1
 nameserver 8.8.8.8
 EOF
 
-# apk
-sed -i '/#.*v.*community/s/#//; s/ //g' /etc/apk/repositories
-sed -i '/#.*edge.*main/s/#//; s/ //g' /etc/apk/repositories
-sed -i '/#.*edge.*community/s/#//; s/ //g' /etc/apk/repositories
-
-# update and install
-apk add --no-cache --update-cache \
-  sudo bash bash-completion \
-  openssh-client sshpass \
-  jq yq nano neovim tree wget curl acl dialog git shellcheck \
-  p7zip e2fsprogs \
-  grep gettext \
-  inotify-tools netcat-openbsd bind-tools \
-  util-linux coreutils findutils binutils iputils procps
 

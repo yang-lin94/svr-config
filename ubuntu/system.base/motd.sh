@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "Welcome to Alpine Linux : `cat /etc/alpine-release`"
+echo "Welcome to Ubuntu Linux: $(grep -oP '(?<=^VERSION_ID=).+' /etc/os-release | tr -d '\"')"
 
 # default shell
 export SHELL='/bin/bash'
