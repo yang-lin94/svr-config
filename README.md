@@ -83,6 +83,12 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.sudopw/system.sudopw.txt | sudo bash
 ```
 
+# ubuntu system.base
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.base/system.base.txt | sudo bash
+```
+
 # ubuntu system.bigred
 
 ```bash

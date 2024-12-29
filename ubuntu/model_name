@@ -1,3 +1,4 @@
+system.base
 system.bigred
 system.disableCloudinit
 system.disableSwap
