@@ -7,6 +7,17 @@ if ! command -v kubectl &>/dev/null; then
   echo 'Please install "kubectl"' && exit 1
 fi
 
+# 取得 crictl.yaml 中的 endpoint 設定
+if [ -f "/etc/crictl.yaml" ]; then
+  criSocket=$(grep "endpoint:" /etc/crictl.yaml | awk '{print $2}' | tr -d '"')
+  if [ -z "$criSocket" ]; then
+    echo "無法從 /etc/crictl.yaml 讀取 endpoint" && exit 1
+  fi
+  export criSocket
+else
+  echo "/etc/crictl.yaml 不存在" && exit 1
+fi
+
 if hostname | grep -qxE 'km1'; then
   # init
   export kubeversion=$(sudo kubeadm version -o json | jq -r .clientVersion.gitVersion)

@@ -4,7 +4,7 @@ localAPIEndpoint:
   advertiseAddress: ${IP}
   bindPort: 6443
 nodeRegistration:
-  criSocket: unix:///run/crio/crio.sock
+  criSocket: ${criSocket}
   imagePullPolicy: IfNotPresent
   name: km1
   taints: null
