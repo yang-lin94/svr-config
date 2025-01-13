@@ -30,6 +30,8 @@ mount --make-rshared /
 mount --make-rshared /sys
 EOF
 chmod a+x /etc/local.d/containers.start
+bash /etc/local.d/containers.start
+
 
 # install cri-o
 # ----------
@@ -50,6 +52,8 @@ EOF
 # start service at boot
 rc-update add crio
 rc-service crio start
+rc-update add cgroups
+rc-service cgroups start
 
 # install k8s
 # ----------
