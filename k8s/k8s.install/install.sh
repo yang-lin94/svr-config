@@ -9,7 +9,7 @@ fi
 
 # 取得 crictl.yaml 中的 endpoint 設定
 if [ -f "/etc/crictl.yaml" ]; then
-  criSocket=$(grep "endpoint:" /etc/crictl.yaml | awk '{print $2}' | tr -d '"')
+  criSocket=$(awk '!seen[$2]++ && /endpoint:/ {gsub(/"/, "", $2); print $2; exit}' /etc/crictl.yaml)
   if [ -z "$criSocket" ]; then
     echo "無法從 /etc/crictl.yaml 讀取 endpoint" && exit 1
   fi
