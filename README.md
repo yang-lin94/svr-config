@@ -11,10 +11,16 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.docker/install.docker.txt | sudo bash
 ```
 
-# alpine install.k8s
+# alpine install.k8s.containerd
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s/install.k8s.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s.containerd/install.k8s.containerd.txt | sudo bash
+```
+
+# alpine install.k8s.crio
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s.crio/install.k8s.crio.txt | sudo bash
 ```
 
 # alpine install.mc

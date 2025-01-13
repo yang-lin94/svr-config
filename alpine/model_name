@@ -1,6 +1,7 @@
 install.config
 install.docker
-install.k8s
+install.k8s.containerd
+install.k8s.crio
 install.mc
 install.podman
 system.base

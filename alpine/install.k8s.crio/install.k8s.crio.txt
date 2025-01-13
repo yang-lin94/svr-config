@@ -40,7 +40,7 @@ apk add cri-o cri-tools crun \
   --allow-untrusted \
   --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   --repository http://dl-cdn.alpinelinux.org/alpine/edge/community
-wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s/crio.conf -qO /etc/crio/crio.conf
+wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s.crio/crio.conf -qO /etc/crio/crio.conf
 tee /etc/crictl.yaml <<EOF
 runtime-endpoint: unix:///var/run/crio/crio.sock
 image-endpoint: unix:///var/run/crio/crio.sock
