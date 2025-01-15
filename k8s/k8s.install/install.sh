@@ -7,6 +7,7 @@ if ! command -v kubectl &>/dev/null; then
   echo 'Please install "kubectl"' && exit 1
 fi
 
+
 # 取得 crictl.yaml 中的 endpoint 設定
 if [ -f "/etc/crictl.yaml" ]; then
   criSocket=$(awk '!seen[$2]++ && /endpoint:/ {gsub(/"/, "", $2); print $2; exit}' /etc/crictl.yaml)
@@ -30,8 +31,14 @@ if hostname | grep -qxE 'km1'; then
     echo "clustername is not set" && exit 1
   fi
 
+  if [ "${vip}" == "" ]; then
+    echo "vip is not set" && exit 1
+  fi
+
+
   wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/k8s/k8s.install/init-config.yaml | envsubst > /tmp/init-config.yaml
   sudo kubeadm init --config=/tmp/init-config.yaml
+
 
 
   # copy cluster token to home
