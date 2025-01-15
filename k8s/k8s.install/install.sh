@@ -57,3 +57,5 @@ if hostname | grep -qxE 'km1'; then
   join="sudo $(kubeadm token create --print-join-command)"
   echo "${join}"
 fi
+
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/k8s/download | bash
