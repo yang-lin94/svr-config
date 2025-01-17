@@ -7,8 +7,8 @@ if ! grep -q 'Alpine.*Linux' /etc/os-release; then
   read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
 fi
 
-# system bigred
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.bigred/system.bigred.txt | sudo bash
+# system base
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.base/system.base.txt | sudo bash
 
 # system ipv46
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.ipv46/system.ipv46.txt | sudo bash
