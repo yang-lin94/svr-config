@@ -6,6 +6,7 @@ install.mc
 install.podman
 system.base
 system.bigred
+system.disableSshPassword
 system.disableSwap
 system.enableSwap
 system.ipv46

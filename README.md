@@ -47,6 +47,12 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.bigred/system.bigred.txt | sudo bash
 ```
 
+# alpine system.disableSshPassword
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.disableSshPassword/system.disableSshPassword.txt | sudo bash
+```
+
 # alpine system.disableSwap
 
 ```bash
