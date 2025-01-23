@@ -1,0 +1,21 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Alpine.*Linux' /etc/os-release; then
+  read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
+fi
+
+# install
+curl -sL $(curl -sL https://api.github.com/repos/go-task/task/releases/latest | jq -r .assets[].browser_download_url | grep 'linux_amd64.tar.gz') -o /tmp/task.tar.gz
+tar -zxvf /tmp/task.tar.gz
+install -m 755 task /usr/local/bin/task
+
+# completion
+wget https://raw.githubusercontent.com/go-task/task/main/completion/bash/task.bash -qO /etc/profile.d/task-env.sh
+
+# clean
+rm -rf /tmp/task* /tmp/completion /tmp/LICENSE /tmp/README.md
+
+echo 'Task installed successfully'

@@ -4,6 +4,7 @@ install.k8s.containerd
 install.k8s.crio
 install.mc
 install.podman
+install.task
 system.base
 system.bigred
 system.disableSshPassword

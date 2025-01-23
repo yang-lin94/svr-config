@@ -35,6 +35,12 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.podman/install.podman.txt | sudo bash
 ```
 
+# alpine install.task
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.task/install.task.txt | sudo bash
+```
+
 # alpine system.base
 
 ```bash
