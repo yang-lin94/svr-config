@@ -1,0 +1,33 @@
+name: ShellCheck
+
+on:
+  push:
+    paths:
+      - '**/*.sh'
+      - '**/*.bash'
+      - '**/**.txt'
+  pull_request:
+    paths:
+      - '**/*.sh'
+      - '**/*.bash'
+      - '**/**.txt'
+
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck
+        run: |
+          find . -type f \( -name "*.sh" -o -name "*.bash" -o -name "*.txt" \) -print0 | \
+          while IFS= read -r -d '' file; do
+            if head -n1 "$file" | grep -q "^#!.*sh"; then
+              echo "Checking $file"
+              shellcheck -S warning "$file" || exit 1
+            fi
+          done
