@@ -1,0 +1,24 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Alpine.*Linux' /etc/os-release; then
+  read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
+fi
+
+if ! command -v podman &>/dev/null; then
+  echo 'please install podman first' && exit 1
+fi
+
+# install kind
+curl -sL $(curl -sL https://api.github.com/repos/kubernetes-sigs/kind/releases/latest | jq -r .assets[].browser_download_url | grep 'kind-linux-amd64' | grep -v '.sha256sum') -o /tmp/kind
+install -m 755 /tmp/kind /usr/local/bin/kind
+
+# clean
+rm -rf /tmp/kind
+
+echo 'kind installed successfully'
+
+
+# todo: add podman support
