@@ -23,6 +23,12 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s.crio/install.k8s.crio.txt | sudo bash
 ```
 
+# alpine install.kind
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.kind/install.kind.txt | sudo bash
+```
+
 # alpine install.mc
 
 ```bash
