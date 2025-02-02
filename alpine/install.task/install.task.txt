@@ -8,7 +8,7 @@ if ! grep -q 'Alpine.*Linux' /etc/os-release; then
 fi
 
 # install
-curl -sL $(curl -sL https://api.github.com/repos/go-task/task/releases/latest | jq -r .assets[].browser_download_url | grep 'linux_amd64.tar.gz') -o /tmp/task.tar.gz
+curl -sL "$(curl -sL https://api.github.com/repos/go-task/task/releases/latest | jq -r .assets[].browser_download_url | grep 'linux_amd64.tar.gz')" -o /tmp/task.tar.gz
 tar -zxvf /tmp/task.tar.gz
 install -m 755 task /usr/local/bin/task
 

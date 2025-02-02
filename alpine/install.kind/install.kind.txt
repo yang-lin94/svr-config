@@ -12,7 +12,7 @@ if ! command -v podman &>/dev/null; then
 fi
 
 # install kind
-curl -sL $(curl -sL https://api.github.com/repos/kubernetes-sigs/kind/releases/latest | jq -r .assets[].browser_download_url | grep 'kind-linux-amd64' | grep -v '.sha256sum') -o /tmp/kind
+curl -sL "$(curl -sL https://api.github.com/repos/kubernetes-sigs/kind/releases/latest | jq -r .assets[].browser_download_url | grep 'kind-linux-amd64' | grep -v '.sha256sum')" -o /tmp/kind
 install -m 755 /tmp/kind /usr/local/bin/kind
 
 # clean
