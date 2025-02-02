@@ -21,20 +21,15 @@ fi
 
 if hostname | grep -qxE 'km1'; then
   # init
-  export kubeversion=$(sudo kubeadm version -o json | jq -r .clientVersion.gitVersion)
+  declare kubeversion
+  kubeversion=$(sudo kubeadm version -o json | jq -r .clientVersion.gitVersion)
 
   if [ "${kubeversion}" == "" ]; then
     echo "kubeadm not found" && exit 1
   fi
 
-  if [ "${clustername}" == "" ]; then
-    echo "clustername is not set" && exit 1
-  fi
-
-  if [ "${vip}" == "" ]; then
-    echo "vip is not set" && exit 1
-  fi
-
+  : "${clustername:?'clustername is not set'}"
+  : "${vip:?'vip is not set'}"
 
   wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/k8s/k8s.install/init-config.yaml | envsubst > /tmp/init-config.yaml
   sudo kubeadm init --config=/tmp/init-config.yaml
