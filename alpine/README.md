@@ -1,4 +1,10 @@
 
+# README.md
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/README.md/README.md.txt | sudo bash
+```
+
 # install.config
 
 ```bash
@@ -9,12 +15,6 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 
 ```bash
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.docker/install.docker.txt | sudo bash
-```
-
-# install.gvisor
-
-```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.gvisor/install.gvisor.txt | sudo bash
 ```
 
 # install.k8s.containerd
@@ -51,12 +51,6 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 
 ```bash
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.task/install.task.txt | sudo bash
-```
-
-# README.md
-
-```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/README.md/README.md.txt | sudo bash
 ```
 
 # system.base
