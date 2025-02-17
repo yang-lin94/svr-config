@@ -1,0 +1,53 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: juicefs-restore
+  namespace: minio
+spec:
+  ttlSecondsAfterFinished: 30
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: juicefs
+          image: docker.io/ylin94/alp.fbs:1.0
+          envFrom:
+            - secretRef:
+                name: juicefs-minio-secret
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              echo "Configuring mc client...";
+              mc alias set minio ${bucket} ${access-key} ${secret-key};
+
+              echo "Finding the latest backup file...";
+              LATEST_FILE=$(mc ls minio/juicefs/data/meta | sort -rk 1 | head -n 1 | awk '{print $NF}')
+              echo "Latest backup file: $LATEST_FILE";
+
+              if [ -z "$LATEST_FILE" ]; then
+                echo "No backup file found, exiting...";
+                exit 1;
+              fi
+
+              echo "Downloading latest backup...";
+              mc cp minio/juicefs/data/meta/$LATEST_FILE /backup/$LATEST_FILE;
+
+              echo "Extracting backup file...";
+              gzip -d /backup/$LATEST_FILE;
+
+              JSON_FILE="/backup/$(basename $LATEST_FILE .gz)"
+              echo "Using JSON file: $JSON_FILE"
+
+              echo "Loading metadata into JuiceFS...";
+              juicefs load ${metaurl} "$JSON_FILE";
+              juicefs config ${metaurl} --access-key=${access-key} --secret-key=${secret-key};
+
+              echo "Restore completed!";
+
+          volumeMounts:
+            - name: backup-volume
+              mountPath: /backup
+      volumes:
+        - name: backup-volume
+          emptyDir: {}

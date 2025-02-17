@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: juicefs-format
+  namespace: minio
+spec:
+  ttlSecondsAfterFinished: 30
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: juicefs
+          image: docker.io/ylin94/alp.fbs:1.0
+          envFrom:
+            - secretRef:
+                name: juicefs-minio-secret
+          command:
+            - "/bin/sh"
+            - "-c"
+            - >
+              juicefs format
+              --storage ${storage}
+              --bucket ${bucket}
+              --access-key ${access-key}
+              --secret-key ${secret-key}
+              ${metaurl}
+              ${name};
+  backoffLimit: 1 # 如果失敗，最多重試一次
