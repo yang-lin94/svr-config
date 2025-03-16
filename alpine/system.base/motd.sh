@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "Welcome to Alpine Linux : `cat /etc/alpine-release`"
+echo "Welcome to Alpine Linux : $(cat /etc/alpine-release)"
 
 # default shell
 export SHELL='/bin/bash'
