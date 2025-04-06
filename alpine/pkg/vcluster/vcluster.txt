@@ -1,0 +1,14 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" to run' && exit 1
+fi
+
+if ! grep -q 'Alpine.*Linux' /etc/os-release; then
+  read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
+fi
+
+
+# install vcluster
+curl -sL $(curl -sL https://api.github.com/repos/loft-sh/vcluster/releases/latest | jq -r .assets[].browser_download_url | grep 'vcluster-linux-amd64$') -o vcluster
+install -o root -g root -m 0755 vcluster /usr/local/bin/vcluster
+rm -rf vcluster*
