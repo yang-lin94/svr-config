@@ -1,0 +1,42 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Alpine.*Linux' /etc/os-release; then
+  read -rp 'Ops, Not Alpine Linux, Press any key to continue.' && exit 1
+fi
+
+# motd
+echo "" | tee /etc/motd &>/dev/null
+wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/base/motd.sh -qO /etc/profile.d/motd.sh
+
+# alias
+wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/base/alias.sh -qO /etc/profile.d/alias.sh
+
+# resolv
+mkdir /etc/udhcpc &>/dev/null
+tee /etc/udhcpc/udhcpc.conf <<EOF
+RESOLV_CONF="no"
+EOF
+
+tee /etc/resolv.conf <<EOF
+nameserver 168.95.1.1
+nameserver 8.8.8.8
+EOF
+
+# apk
+sed -i '/#.*v.*community/s/#//; s/ //g' /etc/apk/repositories
+sed -i '/#.*edge.*main/s/#//; s/ //g' /etc/apk/repositories
+sed -i '/#.*edge.*community/s/#//; s/ //g' /etc/apk/repositories
+
+# update and install
+apk add --no-cache --update-cache \
+  sudo bash bash-completion \
+  openssh-client sshpass \
+  jq yq nano neovim tree wget curl acl dialog git shellcheck \
+  p7zip e2fsprogs \
+  grep gettext \
+  inotify-tools netcat-openbsd bind-tools \
+  util-linux coreutils findutils binutils iputils procps
+

@@ -1,32 +1,52 @@
 #!/bin/bash
 
+# GitHub raw content URL for the repository
 RAW='https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main'
 
-# Define a list of folders to exclude
+# Directories to be excluded from processing
 EXCLUDE_DIRS=("k8s")
 
-# Generate root README.md
-echo '' >README.md
-for model in $(ls -d */ | sed 's|/||g'); do
-  # Check if the current folder is in the exclusion list
-  if [[ ! " ${EXCLUDE_DIRS[@]} " =~ " ${model} " ]]; then
-    ls ${model}/ | grep '\.' >${model}/model_name
+# Initialize/clear root README.md
+: > README.md
 
-    # Add directory link to root README.md
-    echo "# ${model}" >>README.md
-    echo '' >>README.md
-    echo "查看 [${model}](${model}) 的安裝腳本" >>README.md
-    echo '' >>README.md
+# Remove all existing model_name files
+find . -name 'model_name' -type f -exec rm -f {} +
 
-    # Generate README.md for each model directory
-    echo '' >${model}/README.md
-    while read name; do
-      echo "# ${name}" >>${model}/README.md
-      echo '' >>${model}/README.md
-      echo '```bash' >>${model}/README.md
-      echo "wget -qO - ${RAW}/${model}/${name}/${name}.txt | sudo bash" >>${model}/README.md
-      echo '```' >>${model}/README.md
-      echo '' >>${model}/README.md
-    done <${model}/model_name
-  fi
+# Hash map to track processed operating systems
+declare -A processed_os
+
+# Find and process all .txt files in the directory
+find . -name '*.txt' -type f | while read -r path; do
+    IFS='/' read -r _ os class pkg _ <<< "$path"
+
+    # Skip processing if OS is in exclude list
+    [[ " ${EXCLUDE_DIRS[*]} " =~ " ${os} " ]] && continue
+
+    # Create or update OS section in root README.md if not processed
+    if [[ -z "${processed_os[$os]}" ]]; then
+        # Mark OS as processed
+        processed_os[$os]=1
+
+        # Create OS section in root README.md
+        {
+            echo "# ${os}"
+            echo
+            echo "查看 [${os}](${os}) 的安裝腳本"
+            echo
+        } >> README.md
+        : > "${os}/README.md"
+    fi
+
+    # Add package installation instructions to OS-specific README.md
+    {
+        echo "# ${os} ${class} ${pkg}"
+        echo
+        echo '```bash'
+        echo "wget -qO - ${RAW}/${os}/${class}/${pkg}/${pkg}.txt | sudo bash"
+        echo '```'
+        echo
+    } >> "${os}/README.md"
+
+    # Add class.package to OS-specific model_name file
+    echo "${class}.${pkg}" >> "${os}/model_name"
 done
