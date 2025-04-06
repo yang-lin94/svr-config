@@ -1,0 +1,12 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Rocky' /etc/os-release; then
+  read -rp 'Ops, Not Rocky Linux, Press any key to continue.' && exit 1
+fi
+
+
+setenforce 0
+sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
