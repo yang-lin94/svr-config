@@ -100,6 +100,12 @@ wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/ma
 wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/task/task.txt | sudo bash
 ```
 
+# alpine pkg vcluster
+
+```bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/vcluster/vcluster.txt | sudo bash
+```
+
 # alpine pkg k8s.crio
 
 ```bash

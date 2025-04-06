@@ -15,4 +15,5 @@ pkg.docker
 pkg.mc
 pkg.kind
 pkg.task
+pkg.vcluster
 pkg.k8s.crio
