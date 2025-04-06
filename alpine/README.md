@@ -1,115 +1,108 @@
-
-# README.md
+# alpine sys ntp
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/README.md/README.md.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/ntp/ntp.txt | sudo bash
 ```
 
-# install.config
+# alpine sys sshenv
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.config/install.config.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/sshenv/sshenv.txt | sudo bash
 ```
 
-# install.docker
+# alpine sys base
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.docker/install.docker.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/base/base.txt | sudo bash
 ```
 
-# install.k8s.containerd
+# alpine sys sudopw
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s.containerd/install.k8s.containerd.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/sudopw/sudopw.txt | sudo bash
 ```
 
-# install.k8s.crio
+# alpine sys enableSwap
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.k8s.crio/install.k8s.crio.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/enableSwap/enableSwap.txt | sudo bash
 ```
 
-# install.kind
+# alpine sys ipv46
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.kind/install.kind.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/ipv46/ipv46.txt | sudo bash
 ```
 
-# install.mc
+# alpine sys rclocal
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.mc/install.mc.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/rclocal/rclocal.txt | sudo bash
 ```
 
-# install.podman
+# alpine sys user
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.podman/install.podman.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/user/user.txt | sudo bash
 ```
 
-# install.task
+# alpine sys disableSshPassword
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.task/install.task.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/disableSshPassword/disableSshPassword.txt | sudo bash
 ```
 
-# system.base
+# alpine sys disableSwap
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.base/system.base.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/disableSwap/disableSwap.txt | sudo bash
 ```
 
-# system.bigred
+# alpine pkg config
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.bigred/system.bigred.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/config/config.txt | sudo bash
 ```
 
-# system.disableSshPassword
+# alpine pkg k8s.containerd
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.disableSshPassword/system.disableSshPassword.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/k8s.containerd/k8s.containerd.txt | sudo bash
 ```
 
-# system.disableSwap
+# alpine pkg podman
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.disableSwap/system.disableSwap.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/podman/podman.txt | sudo bash
 ```
 
-# system.enableSwap
+# alpine pkg docker
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.enableSwap/system.enableSwap.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/docker/docker.txt | sudo bash
 ```
 
-# system.ipv46
+# alpine pkg mc
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.ipv46/system.ipv46.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/mc/mc.txt | sudo bash
 ```
 
-# system.ntp
+# alpine pkg kind
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.ntp/system.ntp.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/kind/kind.txt | sudo bash
 ```
 
-# system.rclocal
+# alpine pkg task
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.rclocal/system.rclocal.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/task/task.txt | sudo bash
 ```
 
-# system.sshenv
+# alpine pkg k8s.crio
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.sshenv/system.sshenv.txt | sudo bash
-```
-
-# system.sudopw
-
-```bash
-wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.sudopw/system.sudopw.txt | sudo bash
+wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/k8s.crio/k8s.crio.txt | sudo bash
 ```
 

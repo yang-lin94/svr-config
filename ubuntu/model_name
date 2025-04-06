@@ -1,9 +1,8 @@
-README.md
-system.base
-system.bigred
-system.disableCloudinit
-system.disableSwap
-system.enableSwap
-system.ipv46
-system.ntp
-system.sudopw
+sys.ntp
+sys.base
+sys.sudopw
+sys.enableSwap
+sys.ipv46
+sys.disableCloudinit
+sys.user
+sys.disableSwap
