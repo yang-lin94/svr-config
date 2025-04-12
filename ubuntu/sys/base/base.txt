@@ -9,10 +9,10 @@ fi
 
 # motd
 echo "" | tee /etc/motd &>/dev/null
-wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.base/motd.sh -qO /etc/profile.d/motd.sh
+wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/sys/base/motd.sh -qO /etc/profile.d/motd.sh
 
 # alias
-wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/system.base/alias.sh -qO /etc/profile.d/alias.sh
+wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/ubuntu/sys/base/alias.sh -qO /etc/profile.d/alias.sh
 
 # resolv
 # mkdir /etc/udhcpc &>/dev/null
