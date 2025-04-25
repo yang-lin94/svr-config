@@ -1,8 +1,8 @@
-sys.ntp
-sys.base
-sys.sudopw
 sys.enableSwap
-sys.ipv46
-sys.disableCloudinit
 sys.user
 sys.disableSwap
+sys.ipv46
+sys.ntp
+sys.disableCloudinit
+sys.sudopw
+sys.base
