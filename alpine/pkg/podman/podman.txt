@@ -14,10 +14,10 @@ apk add --no-cache --update-cache podman skopeo buildah podman-compose
 CMWHERE=$(grep -w 'docker\|libpod\|buildah' /proc/1/cgroup)
 if [ "${CMWHERE}" == "" ]; then
   # disable swap
-  wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.disableSwap/system.disableSwap.txt | bash
+  wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/disableSwap/disableSwap.txt | bash
 
   # disable ipv46
-  wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/system.ipv46/system.ipv46.txt | bash
+  wget -qO - https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/sys/ipv46/ipv46.txt | bash
 
   # setting
   tee /etc/modules-load.d/containers.conf <<EOF
@@ -55,4 +55,4 @@ fi
 
 # change setting
 mkdir -p /etc/containers &>/dev/null
-wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/install.podman/containers.conf -qO /etc/containers/containers.conf
+# wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/alpine/pkg/podman/containers.conf -qO /etc/containers/containers.conf
