@@ -1,0 +1,32 @@
+#!/bin/bash
+if ! ls /root &>/dev/null; then
+  echo 'Please use "sudo bash" run' && exit 1
+fi
+
+if ! grep -q 'Rocky' /etc/os-release; then
+  read -rp 'Ops, Not Rocky Linux, Press any key to continue.' && exit 1
+fi
+
+# motd
+echo "" | tee /etc/motd &>/dev/null
+wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/rockylinux/sys/base/motd.sh -qO /etc/profile.d/motd.sh
+
+# alias
+wget https://raw.githubusercontent.com/yang-lin94/svr-config/refs/heads/main/rockylinux/sys/base/alias.sh -qO /etc/profile.d/alias.sh
+
+# resolv
+tee /etc/resolv.conf <<EOF
+nameserver 168.95.1.1
+nameserver 8.8.8.8
+EOF
+
+# update and install
+dnf update -y
+dnf install -y \
+  sudo bash bash-completion \
+  openssh-clients sshpass \
+  jq yq nano neovim tree wget curl acl dialog git shellcheck \
+  p7zip e2fsprogs \
+  grep gettext \
+  inotify-tools nc bind-utils \
+  util-linux coreutils findutils binutils iputils procps-ng
