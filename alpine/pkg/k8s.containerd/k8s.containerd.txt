@@ -74,7 +74,7 @@ rc-service kubelet start
 
 # configure containerd for Kubernetes
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
-systemctl restart containerd
+rc-service containerd restart
 
 # download Kubernetes images
 kubeadm config images pull
